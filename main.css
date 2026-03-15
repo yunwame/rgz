@@ -1,0 +1,36 @@
+body {
+    background-color: lightblue;
+    color: maroon;
+    font-family: Arial;
+    margin: 0px;
+}
+
+header {
+    background-color: rosybrown;
+    color: rgb(31, 67, 117);
+    font-style: italic;
+    font-weight: bold;
+    padding: 3pt;
+    font-size: 18px;
+}
+
+main {
+    background-color: lightblue;
+    color: maroon;
+    font-family: Arial;
+    margin: 10px;
+}
+
+footer {
+     background-color: rosybrown;
+    color: rgb(31, 67, 117);
+    font-style: italic;
+    font-weight: bold;
+    padding: 3pt;
+    font-size: 18px;
+    text-align: right;
+}
+
+a {
+    text-decoration: none;
+}
