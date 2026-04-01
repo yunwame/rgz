@@ -22,7 +22,7 @@ main {
 }
 
 footer {
-     background-color: rosybrown;
+    background-color: rosybrown;
     color: rgb(31, 67, 117);
     font-style: italic;
     font-weight: bold;
@@ -33,4 +33,27 @@ footer {
 
 a {
     text-decoration: none;
+}
+
+a:link {
+    background-color: rgb(98, 25, 25);
+    color: beige;
+    font-weight: bold;
+}
+
+a:visited {
+    background-color: rgb(168, 156, 157);
+    color: rgb(50, 50, 105);
+}
+
+a:hover {
+    color: rgb(227, 8, 209);
+    background-color: rgb(237, 192, 199);
+    text-shadow: 4px 3px 15px rgb(54, 98, 139);
+    text-decoration: underline;
+}
+
+a:active {
+    color: black;
+    opacity: 0, 3;
 }
