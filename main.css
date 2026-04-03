@@ -59,3 +59,16 @@ a:active {
     color: black;
     opacity: 0, 3;
 }
+
+div.menu {
+    border: 7px solid;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+    background-color: rgb(219, 163, 181);
+}
+
+div.menu:hover {
+    background-color: palevioletred;
+    box-shadow: 0 0 15px rgb(168, 64, 98);
+}
