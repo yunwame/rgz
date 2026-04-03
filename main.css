@@ -18,7 +18,7 @@ main {
     background-color: lightblue;
     color: maroon;
     font-family: Arial;
-    margin: 10px;
+    margin: 10px 20px 49px;
 }
 
 footer {
@@ -29,6 +29,10 @@ footer {
     padding: 3pt;
     font-size: 18px;
     text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 a {
