@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Лабораторная работа 4</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <style>
+        div {
+            width: 300px;
+            height: 70px;
+            background-color: rgb(185, 124, 136);
+            color: rgb(62, 10, 27);
+            border: 2px dotted rgb(60, 22, 25);
+            margin: 15px;
+            text-align: center;
+            line-height: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .postion-relative {
+            position: relative;
+            left: 140px;
+            top: -135px;
+            z-index: 0;
+        }
+
+        .postion-relative:hover {
+            position: relative;
+            z-index: 2;
+        }
+
+        .postion-absolute {
+            position: absolute;
+            left: 500px;
+        }
+
+        .postion-absolute2 {
+            position: absolute;
+            left: 620px;
+            top: 440px;
+        }
+
+        .postion-absolute3 {
+            position: absolute;
+            left: 360px;
+            top: 550px;
+        }
+
+        .postion-absolute4 {
+            position: absolute;
+            left: 700px;
+            top: 500px;
+        }
+
+        .postion-absolute:hover{
+            z-index: 4;
+            transition: 1s;
+            background-color: rgb(62, 10, 27);
+            color: rgb(185, 124, 136);
+            box-shadow: 5px 15px 15px rgb(134, 37, 102);
+            font-size: 30px;
+            
+        }
+
+        .postion-absolute2:hover{
+            z-index: 4;
+            transition: 1s;
+            background-color: rgb(62, 10, 27);
+            color: rgb(185, 124, 136);
+            box-shadow: 5px 15px 15px rgb(134, 37, 102);
+            font-size: 30px;
+        }
+
+        .postion-absolute3:hover{
+            z-index: 4;
+            transition: 1s;
+            background-color: rgb(62, 10, 27);
+            color: rgb(185, 124, 136);
+            box-shadow: 5px 15px 15px rgb(134, 37, 102);
+            font-size: 30px;
+        }
+
+        .postion-absolute4:hover{
+            z-index: 4;
+            transition: 1s;
+            background-color: rgb(62, 10, 27);
+            color: rgb(185, 124, 136);
+            box-shadow: 5px 15px 15px rgb(134, 37, 102);
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 3
+    </header>
+
+    <main>
+        <div>static</div>
+        <div>static</div>
+        <div class="postion-relative">relative</div>
+        <div>static</div>
+        <div>static</div>
+        <div class="postion-absolute">Absolute 1</div>
+        <div class="postion-absolute2">Absolute 2</div>
+        <div class="postion-absolute3">Absolute 3</div>
+        <div class="postion-absolute4">Absolute 4</div>
+        <div>static</div>
+    </main>
+
+    <footer>
+        &copy; Коваленко Олеся, ФБИ-44, 2 курс, 2026
+    </footer>
+</body>
+
+</html>
