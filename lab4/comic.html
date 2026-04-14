@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Комикс</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <style>
+        .comic {
+            position: relative;
+            display: inline-block;
+        }
+
+        .comic img {
+            display: block;
+            width: 80%;
+        }
+
+        .cloud1 {
+            width: 50px;
+            height: 3px;
+            left: 460px;
+            top: -470px;
+            position: relative;
+            z-index: 3px;
+            border: 1px solid;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 38px;
+            background-color: pink;
+            font-size: 35px;
+            box-shadow: 5px 10px 15px rgb(110, 56, 65);
+            opacity: 0;
+        }
+
+        .cloud2 {
+            width: 70px;
+            height: 20px;
+            left: 495px;
+            top: -580px;
+            position: relative;
+            z-index: 3px;
+            border: 1px solid;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 38px;
+            background-color: pink;
+            font-size: 35px;
+            box-shadow: 5px 10px 15px rgb(110, 56, 65);
+            opacity: 0;
+        }
+
+        .cloud3 {
+            width: 120px;
+            height: 40px;
+            left: 560px;
+            top: -715px;
+            position: relative;
+            z-index: 3px;
+            border: 1px solid;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 38px;
+            background-color: pink;
+            font-size: 35px;
+            box-shadow: 5px 10px 15px rgb(110, 56, 65);
+            opacity: 0;
+        }
+
+        .cloud4 {
+            width: 190px;
+            height: 70px;
+            left: 635px;
+            top: -850px;
+            position: relative;
+            z-index: 3px;
+            border: 1px solid;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 38px;
+            background-color: pink;
+            font-size: 35px;
+            box-shadow: 5px 10px 15px rgb(110, 56, 65);
+            opacity: 0;
+        }
+
+        .comic:hover .cloud1 {
+            opacity: 1;
+        }
+
+        .comic:hover .cloud2 {
+            opacity: 1;
+        }
+
+        .comic:hover .cloud3 {
+            opacity: 1;
+        }
+
+        .comic:hover .cloud4 {
+            opacity: 1;
+        }
+
+        .comic:hover .cloud1 {
+            transition-delay: 0s;
+        }
+
+        .comic:hover .cloud2 {
+            transition-delay: 0.2s;
+        }
+
+        .comic:hover .cloud3 {
+            transition-delay: 0.4s;
+        }
+
+        .comic:hover .cloud4 {
+            transition-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+
+    <main>
+        <div class="comic">
+            <img src="comic.jpg" width="65%">
+            <div class="cloud1"></div>
+            <div class="cloud2"></div>
+            <div class="cloud3"></div>
+            <div class="cloud4">Huh?</div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Коваленко Олеся, ФБИ-44, 2 курс, 2026
+    </footer>
+</body>
+
+</html>
