@@ -16,6 +16,15 @@
             let result = a + b;
             alert("Сумма " + 5154 + " и " + 7891 + " равна " + result);
         }
+
+        function showAuthor() {
+            let author = "Автор страницы:\nКоваленко Олеся Викторовна";
+            alert(author);
+        }
+
+        function showHello() {
+            alert("Приветствую вас на моей странице!\n«Код — это поэзия, которую понимает машина»")
+        }
     </script>
     <style>
         .message {
@@ -32,16 +41,16 @@
 </head>
 
 <body>
-    <header>
+    <header onclick="showAuthor()" style="cursor: pointer;">
         НГТУ, ФБ, Лабораторная работа 4
     </header>
 
     <main>
         <div class="message" onclick="showSum()">Сколько будет 5154+7891?</div>
-        <div class="message">Узнать, кто автор страницы</div>
+        <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
 
-    <footer>
+    <footer ondblclick="showHello()" style="cursor: pointer;">
         &copy; Коваленко Олеся, ФБИ-44, 2 курс, 2026
     </footer>
 </body>
