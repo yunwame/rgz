@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Корзина</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <script>
+        function CalculateTotal() {
+            let apples = parseInt(document.getElementById('apples').value);
+            let pears = parseInt(document.getElementById('pears').value);
+            let oranges = parseInt(document.getElementById('oranges').value);
+            let melons = parseInt(document.getElementById('melons').value);
+            let mangoes = parseInt(document.getElementById('mangoes').value);
+
+            if (isNaN(apples)) apples = 0;
+            if (isNaN(pears)) pears = 0;
+            if (isNaN(oranges)) oranges = 0;
+            if (isNaN(melons)) melons = 0;
+            if (isNaN(mangoes)) mangoes = 0;
+
+            let total = apples * 100 + pears * 80 + oranges * 150 + melons * 300 + mangoes * 200;
+            document.getElementById('totalPrice').innerHTML = 'Общая цена: ' + total + ' р';
+        }
+
+        function ClearCart() {
+            document.getElementById('apples').value = '';
+            document.getElementById('pears').value = '';
+            document.getElementById('oranges').value = '';
+            document.getElementById('melons').value = '';
+            document.getElementById('mangoes').value = '';
+            document.getElementById('totalPrice').innerHTML = '';
+        }
+    </script>
+    <style>
+        .cart-frame {
+            border: 3px solid #80035f;
+            border-radius: 20px;
+            padding: 20px;
+            background-color: #cea2c2;
+            margin: 20px auto;
+            max-width: 350px;
+        }
+
+        .cart-item {
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+
+        .cart-item label {
+            font-weight: bold;
+            font-size: 15px;
+            color: #67074d;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button:hover {
+            background-color: #cc31b5;
+        }
+
+        .total-area {
+            margin-top: 15px;
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <div class="cart-frame">
+            <h2 style="text-align: center; margin-bottom: 20px;">Корзина товаров</h2>
+
+            <div class="cart-item">
+                <label>Яблоки (100р/шт): <input type="number" id="apples" min="0" placeholder="сколько яблок?"></label>
+            </div>
+            <div class="cart-item">
+                <label>Груши (80р/шт): <input type="number" id="pears" min="0"
+                        placeholder="введите кол-во груш"></label>
+            </div>
+            <div class="cart-item">
+                <label>Апельсины (150р/шт): <input type="number" id="oranges" min="0"
+                        placeholder="апельсины, шт"></label>
+            </div>
+            <div class="cart-item">
+                <label>Дыни (300р/шт): <input type="number" id="melons" min="0" placeholder="дыни, штук"></label>
+            </div>
+            <div class="cart-item">
+                <label>Манго (200р/шт): <input type="number" id="mangoes" min="0"
+                        placeholder="манго, количество"></label>
+            </div>
+
+            <div class="buttons">
+                <button onclick="CalculateTotal()">Рассчитать</button>
+                <button onclick="ClearCart()">Очистить</button>
+            </div>
+    </main>
+
+    <footer>
+        &copy; Коваленко Олеся, ФБИ-44, 2 курс, 2026
+    </footer>
+
+</body>
+
+</html>
