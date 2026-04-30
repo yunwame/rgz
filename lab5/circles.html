@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Круги</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <script>
+        function hideCircle(circle) {
+            circle.classList.add('hidden');
+        }
+        function restoreAllCircles() {
+            let circles = document.getElementsByClassName('circle');
+            for (let circle of circles) {
+                circle.classList.remove('hidden');
+            }
+        }
+    </script>
+
+    <style>
+        .circle {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 3px 3px 3px rgb(69, 59, 59);
+            cursor: pointer;
+            transition: all 1s ease;
+            box-shadow: 3px 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .circle.hidden {
+            transform: scale(0);
+            opacity: 0;
+        }
+        .restore {
+            display: block;
+            margin: 400px auto;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+
+    <main>
+        <div id="circlesField" class="circles-field">
+            <div class="circle" style="background-color: rgb(180, 70, 160); left: 300px; top: 100px;"
+                onclick="hideCircle(this)">1</div>
+            <div class="circle" style="background-color: rgb(222, 177, 176); left: 800px; top: 120px;"
+                onclick="hideCircle(this)">2</div>
+            <div class="circle" style="background-color: rgb(176, 230, 183); left: 1000px; top: 600px;"
+                onclick="hideCircle(this)">3</div>
+            <div class="circle" style="background-color: rgb(183, 173, 230); left: 450px; top: 280px;"
+                onclick="hideCircle(this)">4</div>
+            <div class="circle" style="background-color: rgb(217, 235, 135); left: 420px; top: 450px;"
+                onclick="hideCircle(this)">5</div>
+            <div class="circle" style="background-color: rgb(250, 135, 135); left: 900px; top: 300px;"
+                onclick="hideCircle(this)">6</div>
+            <div class="circle" style="background-color: rgb(161, 58, 89); left: 580px; top: 150px;"
+                onclick="hideCircle(this)">7</div>
+            <div class="circle" style="background-color: rgb(117, 255, 227); left: 200px; top: 400px;"
+                onclick="hideCircle(this)">8</div>
+            <div class="circle" style="background-color: rgb(229, 56, 212); left: 650px; top: 600px;"
+                onclick="hideCircle(this)">9</div>
+            <div class="circle" style="background-color: rgb(161, 209, 72); left: 1100px; top: 450px;"
+                onclick="hideCircle(this)">10</div>
+        </div>
+        <button class="restore" onclick="restoreAllCircles()">Восстановить все круги</button>
+    </main>
+
+    <footer>
+        &copy; Коваленко Олеся, ФБИ-44, 2 курс, 2026
+    </footer>
+</body>
+
+</html>
