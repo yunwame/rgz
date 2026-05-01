@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Круги</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <script>
+        function showCoords() {
+            let x = this.event.x;
+            let y = this.event.y;
+            let div = document.getElementById('block');
+
+            if (this.event.ctrlKey) {
+                div.style.color = 'red';
+            } else if (this.event.shiftKey) {
+                div.style.color = 'DarkOliveGreen';
+            } else if (this.event.altKey) {
+                div.style.color = 'Indigo';
+            } else {
+                div.style.color = 'black';
+            }
+
+            let text = '<b>x</b> = ' + x + 'px<br><b>y</b> = ' + y + 'px<br>';
+
+            if (this.event.ctrlKey) {
+                text = text + 'Нажата клавиша Ctrl<br>';
+            }
+            if (this.event.shiftKey) {
+                text = text + 'Нажата клавиша Shift<br>';
+            }
+            if (this.event.altKey) {
+                text = text + 'Нажата клавиша Alt<br>';
+            }
+
+            div.innerHTML = text;
+        }
+    </script>
+
+    <style>
+        div {
+            border: 3px solid rgb(142, 77, 87);
+            background-color: rgb(234, 192, 199);
+            width: 100px;
+            height: 100px;
+            cursor: crosshair;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+
+    <main>
+        <div id="block" onmousemove="showCoords()"></div>
+    </main>
+
+    <footer>
+        &copy; Коваленко Олеся, ФБИ-44, 2 курс, 2026
+    </footer>
+</body>
+
+</html>
