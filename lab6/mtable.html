@@ -10,11 +10,28 @@
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="shortcut icon" href="../favicon-32x32.png">
     <script>
-        function showMutipleTable() {
+        function buildTable() {
+            let multiply = parseInt(document.getElementById('multiply').value);
+            let start = parseInt(document.getElementById('start').value);
+            let end = parseInt(document.getElementById('end').value);
+
+            if (isNaN(multiply)) multiply = 7;
+            if (isNaN(start)) start = 1;
+            if (isNaN(end)) end = 10;
+
+            let from = start;
+            let to = end;
+            if (from > to) {
+                let temp = from;
+                from = to;
+                to = temp;
+            }
+
             let tbl = document.getElementById('mtable');
             tbl.innerHTML = '<h1>Таблица умножения</h1>';
-            for (i = 1; i <= 10; i++) {
-                let s = `<div>${i} * 7 = ${i * 7}</div>`;
+
+            for (let i = from; i <= to; i++) {
+                let s = '<div>' + i + ' * ' + multiply + ' = ' + (i * multiply) + '</div>';
                 tbl.innerHTML += s;
             }
         }
@@ -23,7 +40,7 @@
     <style>
         #mtable {
             border: 5px solid;
-            border-radius: 15%;
+            border-radius: 5%;
             text-align: center;
             padding: 5px 10px 45px 10px;
             background-color: rgb(191, 164, 172);
@@ -32,16 +49,46 @@
             left: 600px;
             width: 200px;
         }
+
+        .controls {
+            border: 5px solid;
+            border-radius: 5%;
+            text-align: center;
+            padding: 25px 10px 45px 10px;
+            width: 200px;
+            height: 170px;
+            background-color: rgb(191, 164, 172);
+            color: rgb(39, 27, 27);
+            position: relative;
+            left: 850px;
+            top: -300px;
+        }
     </style>
 </head>
 
-<body onload="showMutipleTable()">
+<body onload="buildTable()">
     <header>
         НГТУ, ФБ, Лабораторная работа 4
     </header>
 
     <main>
         <div id="mtable"></div>
+
+        <div class="controls">
+            <label>Умножить на</label>
+            <input type="number" id="multiply" value="7">
+
+            <p><label>Начать с</label>
+                <input type="number" id="start" value="1">
+            </p>
+
+            <label>Закончить на</label>
+            <input type="number" id="end" value="10">
+
+            <p>
+                <button onclick="buildTable()">Таблица</button>
+            </p>
+        </div>
     </main>
 
     <footer>
