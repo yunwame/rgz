@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <script>
+        function showDiagram() {
+            let data = [36, 86, 55, 28, 92, 60, 41, 17, 9, 43];
+            let colors = ['IndianRed', 'LightCoral', 'Salmon', 'DarkSalmon', 'LightSalmon', 'Crimson', 'Red', 'FireBrick', 'DarkRed', 'Maroon'];
+            let bars = document.getElementsByClassName('bar');
+            const maxData = Math.max(...data);
+            const maxBarHeight = 320;
+            for (let i = 0; i < data.length; i++) {
+                let barHeight = (data[i] / maxData) * maxBarHeight;
+                bars[i].style.height = barHeight + 'px';
+                bars[i].style.backgroundColor = colors[i];
+                bars[i].innerHTML = data[i];
+            }
+        }
+    </script>
+
+    <style>
+        .bar{
+            width: 160px;
+            height: 50px;
+            border: 1px solid rgb(242, 160, 202);
+            text-align: center;
+            color: rgb(255, 248, 248);
+        }
+        #diag{
+            width: 600px;
+            height: auto;
+            background-color: rgb(77, 24, 24);
+            border: 2px solid rgb(251, 251, 251);
+            display: flex;
+            align-items: flex-end; 
+            padding: 10px;
+            gap: 6px;
+        }
+    </style>
+</head>
+
+<body onload="showDiagram()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+
+    <main>
+        <div id="diag">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Коваленко Олеся, ФБИ-44, 2 курс, 2026
+    </footer>
+</body>
+
+</html>
