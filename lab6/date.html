@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <script>
+
+        function showDate() {
+            let out = document.getElementById('current-date');
+            let today = new Date();
+            out.innerHTML = 
+                "Дата и время для русской локали: " + today.toLocaleString('ru-RU') + "<br>" +
+                "Дата и время для английской локали: " + today.toLocaleString('en-US') + "<br>" +
+                "Дата и время для немецкой локали: " + today.toLocaleString('de-DE') + "<br>" +
+                "Дата и время для французской локали: " + today.toLocaleString('fr-FR') + "<br>" +
+                "Дата и время для японской локали: " + today.toLocaleString('ja-JP') + "<br>" +
+                "Дата и время для китайской локали: " + today.toLocaleString('zh-CN');
+        }
+
+        let timerNum = null;
+
+        function ChangeColors() {
+            const header = document.getElementsByTagName('header')[0];
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            header.style.color = rgb;
+        }
+
+        function startChangeColors() {
+            ChangeColors();
+            if (timerNum === null) {
+                timerNum = setInterval(ChangeColors, 500);
+                document.getElementById('start-btn').disabled = true;
+                document.getElementById('stop-btn').disabled = false;
+            }
+        }
+
+        function stopChangeColors() {
+            if (timerNum !== null) {
+                clearInterval(timerNum);
+                timerNum = null;
+
+                document.getElementById('startBtn').disabled = false;
+                document.getElementById('stopBtn').disabled = true;
+            }
+        }
+
+        let timeInterval = null;
+
+        function startTimeUpdate() {
+            if (timeInterval === null) {
+                timeInterval = setInterval(showDate, 1000);
+            }
+        }
+
+        function stopTimeUpdate() {
+            if (timeInterval !== null) {
+                clearInterval(timeInterval);
+                timeInterval = null;
+            }
+        }
+    </script>
+
+    <style>
+        #current-date {
+            border: 3px solid rgb(79, 35, 35);
+            display: inline-block;
+            margin: 20px;
+            border-radius: 25px;
+            padding: 20px;
+            background-color: rgb(232, 194, 194);
+            color: rgb(101, 23, 23);
+            line-height: 30px;
+        }
+
+        header {
+            transition: color 0.5s ease;
+        }
+    </style>
+</head>
+
+<body onload="showDate()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+    <main>
+        <div id="current-date"></div>
+        <div>
+            <button onclick="startChangeColors()">Старт</button>
+            <button onclick="stopChangeColors()" disabled>Стоп</button>
+        </div>
+        <div>
+            <button onclick="startTimeUpdate()">Обновлять время</button>
+            <button onclick="stopTimeUpdate()">Остановить обновление времени</button>
+        </div>
+    </main>
+
+    <footer>
+        &copy;Коваленко Олеся, ФБИ-44, 2 курс, 2026
+    </footer>
+
+</body>
+
+</html>
