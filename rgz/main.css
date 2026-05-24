@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     background: #f1f3f7;
     padding-right: 220px;
 }
@@ -43,7 +43,6 @@ body {
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
-    border: none;
 }
 
 .up-btn:hover {
