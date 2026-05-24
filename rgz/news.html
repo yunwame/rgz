@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Юнипро | Новости</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        h1 {
+            color: #244887;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .date {
+            color: #244887;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 25px;
+            font-weight: bold;
+            color: #3d67af;
+            margin-bottom: 12px;
+        }
+        .short-text {
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .full-text {
+            display: none;
+            background: #e8eef8;
+            padding: 14px;
+            border-radius: 12px;
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+        .full-text.show {
+            display: block;
+        }
+        .btn-show {
+            background: #788db3;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        .btn-show:hover {
+            background: #244887;
+        }
+        @media (max-width: 700px) {
+            body {
+                padding-right: 0;
+            }
+            .up-btn {
+                right: 20px;
+            }
+        }
+    </style>
+    <script>
+        // функция показа/скрытия полного текста
+        function toggleNews(btn, index) {
+            const fullDiv = document.getElementById(`full-${index}`);
+            if (fullDiv.classList.contains('show')) {
+                fullDiv.classList.remove('show');
+                btn.textContent = 'Показать полностью';
+            } else {
+                fullDiv.classList.add('show');
+                btn.textContent = 'Скрыть';
+            }
+        }
+
+        // функция отрисовки всех новостей (цикл for)
+        function renderNews() {
+            const container = document.getElementById('newsContainer');
+            if (!container) return;
+            let html = '';
+            for (let i = 0; i < newsData.length; i++) {
+                const news = newsData[i];
+                html += `
+                    <div class="card">
+                        <div class="date">${news.date}</div>
+                        <div class="title">${news.title}</div>
+                        <div class="short-text">${news.short}</div>
+                        <div id="full-${i}" class="full-text">${news.full}</div>
+                        <button class="btn-show" onclick="toggleNews(this, ${i})">Показать полностью</button>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        // кнопка наверх (плавная прокрутка, как в первой странице)
+        function goUp() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // запуск после загрузки страницы (как в лабе 6)
+        window.addEventListener('DOMContentLoaded', function() {
+            renderNews();
+        });
+    </script>
+    <script src="news.js"></script>
+</head>
+<body>
+
+<div class="menu">
+    <a href="aboutcompany.html">О компании</a>
+    <a href="news.html" class="active">Новости</a>
+    <a href="valuta.html">Курс валют</a>
+    <a href="contact.html">Контакты</a>
+    <a href="video.html">Видео</a>
+</div>
+
+<div class="content">
+    <h1>Новости компании Юнипро</h1>
+    <div id="newsContainer" class="news-list"></div>
+    <footer>
+        <p>&copy; 2013 - 2026 Официальный сайт ПАО «Юнипро»</p>
+    </footer>
+</div>
+
+<!-- КНОПКА НАВЕРХ (как в первой странице: ссылка с классом up-btn) -->
+<a href="#" class="up-btn" onclick="goUp(); return false;">↑ Наверх</a>
+
+</body>
+</html>
