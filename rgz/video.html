@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <title>Юнипро | Видео</title>
+    <title>Юнипро. Видео</title>
     <link rel="stylesheet" href="main.css">
     <style>
-        /* Стили только для этой страницы, минималистично */
         .video-container {
             background: white;
             border-radius: 20px;
             padding: 20px;
         }
+
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Соотношение сторон 16:9 */
-            height: 0;
+            padding-bottom: 56%;
             overflow: hidden;
             border-radius: 15px;
         }
+
         .video-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            border: none;
         }
+
         .video-description {
             margin-top: 20px;
             padding: 15px;
@@ -37,41 +36,40 @@
         }
     </style>
 </head>
+
 <body>
+    <header></header>
 
-<!-- Боковое меню -->
-<div class="menu">
-    <a href="aboutcompany.html">О компании</a>
-    <a href="news.html">Новости</a>
-    <a href="valuta.html">Курс валют</a>
-    <a href="contact.html">Контакты</a>
-    <a href="video.html" class="active">Видео</a>
-</div>
-
-<!-- Основной контент -->
-<div class="content">
-    <h1>Видео о компании</h1>
-    
-    <div class="video-container">
-        <!-- ВСТАВЛЯЕМ ПРАВИЛЬНОЕ ВИДЕО ПРО ЮНИПРО -->
-        <div class="video-wrapper">
-            <iframe 
-                src="https://vkvideo.ru/video_ext.php?oid=-210893201&id=456239648&hash=12b5db2ca15bdf61&hd=4" 
-                frameborder="0" 
-                allow="clipboard-write; autoplay" 
-                webkitallowfullscreen 
-                mozallowfullscreen 
-                allowfullscreen>
-            </iframe>
+    <main>
+        <div class="menu">
+            <a href="aboutcompany.html">О компании</a>
+            <a href="news.html">Новости</a>
+            <a href="valuta.html">Курс валют</a>
+            <a href="contact.html">Контакты</a>
+            <a href="video.html" class="active">Видео</a>
         </div>
-        <div class="video-description">
-            🎥 <strong>ПАО «Юнипро»</strong> — Крупнейшая частная энергетическая компания. История, преимущества и перспективы развития.
+
+        <div class="content">
+            <h1>Видео о компании</h1>
+
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://vkvideo.ru/video_ext.php?oid=-210893201&id=456239648&hash=12b5db2ca15bdf61&hd=4"
+                        frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-description">
+                    <b>ПАО «Юнипро»</b> - Крупнейшая частная энергетическая компания. История, преимущества
+                    и перспективы развития.
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </main>
 
-<!-- Кнопка Наверх -->
-<a href="#" class="up-btn" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">↑</a>
-
+    <footer>
+        <p>&copy; 2013 - 2026 Официальный сайт ПАО «Юнипро»</p>
+    </footer>
 </body>
+
 </html>
