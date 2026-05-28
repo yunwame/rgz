@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <style>
+        .euro-card {
+            border: 2px solid #ba8995;
+            border-radius: 25px;
+            width: 300px;
+            padding: 10px;
+            margin: 10px;
+            background: #e7d4d4;
+            color: rgb(120, 59, 73);
+        }
+    </style>
+    <script>
+        function getEuroExchangeRate() {
+            const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (json) {
+                    let curr = json.Valute.EUR.Value;
+                    let prev = json.Valute.EUR.Previous;
+                    let date = json.Date.slice(0, 10);
+                    let diff = curr - prev;
+
+                    document.getElementById('euro-info').innerHTML = `
+                        <div class="euro-card">
+                            <b>Курс евро: ${curr.toFixed(4)} Р</b><br>
+                            Дата: ${date}<br>
+                            Курс на прошлую дату: ${prev.toFixed(4)} Р<br>
+                            Разница: ${diff.toFixed(4)} ₽<br>
+                            Курс ${diff > 0 ? 'поднялся' : (diff < 0 ? 'опустился' : 'не изменился')}<br>
+                            <a href="https://www.cbr-xml-daily.ru/" target="_blank">Курсы валют, API</a>
+                        </div>
+                    `;
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 7</header>
+    <main>
+        <button onclick="getEuroExchangeRate()">Курс евро</button>
+        <div id="euro-info"></div>
+    </main>
+    <footer>&copy;Коваленко Олеся, ФБИ-44, 2 курс, 2026</footer>
+</body>
+
+</html>
