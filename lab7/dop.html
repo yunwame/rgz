@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коваленко Олеся Викторовна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            padding: 10px;
+            min-height: 250px;
+            background: rgb(255, 235, 243);
+       
+        }
+        .bar-item {
+            flex: 1;
+        }
+        .bar-group {
+            display: flex;
+            gap: 2px;
+            align-items: flex-end;
+            margin-bottom: 5px;
+        }
+        .bar-forecast {
+            width: 20px;
+            background-color: #84adc9;
+            border-radius: 2px 2px 0 0;
+        }
+        .bar-actual {
+            width: 20px;
+            background-color: #52c66f;
+            border-radius: 2px 2px 0 0;
+        }
+        .bar-label {
+            font-size: 9px;
+            text-align: center;
+        }
+        .bar-value {
+            font-size: 9px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        .current-values {
+            display: flex;
+            background: rgb(255, 235, 243);
+            border-radius: 15px;
+            color: #6f4254;
+        }
+        .current-item {
+            flex: 1;
+            text-align: center;
+        }
+        .current-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6f4254;
+        }
+        .legend {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 5px;
+        }
+    
+    </style>
+    <script>
+        function getWeather() {
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m,relative_humidity_2m&current=temperature_2m,relative_humidity_2m&timezone=Asia%2FNovosibirsk&past_days=1&forecast_days=1';
+            
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    const times = data.hourly.time;
+                    const temps = data.hourly.temperature_2m;
+                    const hums = data.hourly.relative_humidity_2m;
+                    
+                    document.getElementById('current-values').innerHTML = `
+                        <div class="current-item">
+                            <div>Текущая температура</div>
+                            <div class="current-value">${data.current.temperature_2m} °C</div>
+                        </div>
+                        <div class="current-item">
+                            <div>Текущая влажность</div>
+                            <div class="current-value">${data.current.relative_humidity_2m} %</div>
+                        </div>
+                    `;
+                    
+                    const actualTemps = temps.slice(0, 24);
+                    const forecastTemps = temps.slice(24, 48);
+                    const actualHums = hums.slice(0, 24);
+                    const forecastHums = hums.slice(24, 48);
+                    
+                    let allTemps = actualTemps.concat(forecastTemps);
+                    let maxTemp = Math.max(...allTemps);
+                    let minTemp = Math.min(...allTemps);
+                    
+                    let allHums = actualHums.concat(forecastHums);
+                    let maxHum = Math.max(...allHums);
+                    let minHum = Math.min(...allHums);
+                    
+                    let chartTemp = '<div class="bar-chart">';
+                    let chartHum = '<div class="bar-chart">';
+                    
+                    for (let i = 0; i < 24; i++) {
+                        let time = times[i].slice(11,16);
+                        let date = times[i].slice(5,10);
+                        
+                        let hTempActual = ((actualTemps[i] - minTemp) / (maxTemp - minTemp)) * 180 + 20;
+                        let hTempForecast = ((forecastTemps[i] - minTemp) / (maxTemp - minTemp)) * 180 + 20;
+                        
+                        let hHumActual = ((actualHums[i] - minHum) / (maxHum - minHum)) * 180 + 20;
+                        let hHumForecast = ((forecastHums[i] - minHum) / (maxHum - minHum)) * 180 + 20;
+                        
+                        chartTemp += `
+                            <div class="bar-item">
+                                <div class="bar-group">
+                                    <div class="bar-actual" style="height: ${hTempActual}px;"></div>
+                                    <div class="bar-forecast" style="height: ${hTempForecast}px;"></div>
+                                </div>
+                                <div class="bar-value">${actualTemps[i]}°/${forecastTemps[i]}°</div>
+                                <div class="bar-label">${date}<br>${time}</div>
+                            </div>
+                        `;
+                        
+                        chartHum += `
+                            <div class="bar-item">
+                                <div class="bar-group">
+                                    <div class="bar-actual" style="height: ${hHumActual}px;"></div>
+                                    <div class="bar-forecast" style="height: ${hHumForecast}px;"></div>
+                                </div>
+                                <div class="bar-value">${actualHums[i]}%/${forecastHums[i]}%</div>
+                                <div class="bar-label">${date}<br>${time}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    document.getElementById('temp-chart').innerHTML = chartTemp;
+                    document.getElementById('humidity-chart').innerHTML = chartHum;
+                });
+        }
+        
+        getWeather();
+    </script>
+</head>
+<body>
+    <header>НГТУ, ФБ, Лабораторная работа 7</header>
+    <main>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-color" style="background:#52c66f;"></div><span>Факт</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#84adc9;"></div><span>Прогноз</span></div>
+        </div>
+        
+        <div id="current-values" class="current-values"></div>
+        
+        <h3>Температура</h3>
+        <div id="temp-chart" class="chart-container"></div>
+        
+        <h3>Влажность</h3>
+        <div id="humidity-chart" class="chart-container"></div>
+    </main>
+    <footer>&copy;Коваленко Олеся, ФБИ-44, 2 курс, 2026</footer>
+</body>
+</html>
