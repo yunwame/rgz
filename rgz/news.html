@@ -73,7 +73,7 @@
     </style>
     <script>
         function toggleNews(btn, index) {
-            var fullDiv = document.getElementById('full-' + index);
+            let fullDiv = document.getElementById('full-' + index);
             if (fullDiv.className.indexOf('show') >= 0) {
                 fullDiv.className = fullDiv.className.replace(' show', '');
                 btn.value = 'Показать полностью';
@@ -84,9 +84,9 @@
         }
 
         function renderNews() {
-            var container = document.getElementById('newsContainer');
-            var out = '';
-            for (var i = 0; i < newsData.length; i++) {
+            let container = document.getElementById('newsContainer');
+            let out = '';
+            for (let i = 0; i < newsData.length; i++) {
                 out += '<div class="card">';
                 out += '<div class="date">' + newsData[i].date + '</div>';
                 out += '<div class="title">' + newsData[i].title + '</div>';
