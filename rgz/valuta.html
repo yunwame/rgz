@@ -62,13 +62,13 @@
         }
     </style>
     <script>
-        var cadRate = 0;
-        var cadRates = [51.52, 51.48, 51.55, 51.61, 51.58, 51.49, 51.43,
+        let cadRate = 0;
+        let cadRates = [51.52, 51.48, 51.55, 51.61, 51.58, 51.49, 51.43,
             51.38, 51.35, 51.42, 51.51, 51.59, 51.63, 51.67,
             51.72, 51.68, 51.60, 51.54, 51.47, 51.39, 51.34,
             51.31, 51.36, 51.44, 51.52, 51.58, 51.64, 51.70,
             51.75, 51.73];
-        var historyData = [];
+        const historyData = [];
 
         function loadRate() {
             fetch('https://www.cbr-xml-daily.ru/daily_json.js')
@@ -82,29 +82,29 @@
         }
 
         function makeHistory() {
-            var today = new Date();
-            for (var i = 0; i < cadRates.length; i++) {
-                var d = new Date(today);
+            const today = new Date();
+            for (let i = 0; i < cadRates.length; i++) {
+                const d = new Date(today);
                 d.setDate(today.getDate() - (cadRates.length - 1 - i));
-                var dateStr = d.getDate() + '.' + (d.getMonth() + 1);
+                const dateStr = d.getDate() + '.' + (d.getMonth() + 1);
                 historyData[i] = { date: dateStr, rate: cadRates[i].toFixed(2) };
             }
         }
 
         function drawDiagram() {
-            var container = document.getElementById('diagram');
-            var maxRate = cadRates[0];
-            var minRate = cadRates[0];
-            for (var i = 0; i < cadRates.length; i++) {
+            const container = document.getElementById('diagram');
+            let maxRate = cadRates[0];
+            let minRate = cadRates[0];
+            for (let i = 0; i < cadRates.length; i++) {
                 if (cadRates[i] > maxRate) maxRate = cadRates[i];
                 if (cadRates[i] < minRate) minRate = cadRates[i];
             }
-            var range = maxRate - minRate;
+            let range = maxRate - minRate;
             if (range < 1) range = 1;
 
-            var out = '';
-            for (var i = 0; i < historyData.length; i++) {
-                var h = 40 + ((historyData[i].rate - minRate) / range) * 150;
+            let out = '';
+            for (let i = 0; i < historyData.length; i++) {
+                const h = 40 + ((historyData[i].rate - minRate) / range) * 150;
                 out = out + '<div style="display: flex; flex-direction: column; align-items: center;">';
                 out = out + '<div class="bar" style="height: ' + h + 'px" onclick="selectBar(' + i + ')">' + historyData[i].rate + '</div>';
                 out = out + '<div class="bar-label">' + historyData[i].date + '</div>';
@@ -114,31 +114,31 @@
         }
 
         function selectBar(index) {
-            var bars = document.querySelectorAll('.bar');
-            for (var i = 0; i < bars.length; i++) {
+            const bars = document.querySelectorAll('.bar');
+            for (let i = 0; i < bars.length; i++) {
                 bars[i].className = 'bar';
             }
             bars[index].className = 'bar selected';
-            document.getElementById('info').innerHTML = '📅 ' + historyData[index].date + ' | Курс CAD: ' + historyData[index].rate + ' ₽';
+            document.getElementById('info').innerHTML = historyData[index].date + ' | Курс CAD: ' + historyData[index].rate + ' ₽';
         }
 
         function rubToCad() {
-            var rub = document.getElementById('rub').value;
+            const rub = document.getElementById('rub').value;
             if (rub === '' || isNaN(rub)) {
                 document.getElementById('cadOut').value = '';
                 return;
             }
-            var res = parseFloat(rub) / cadRate;
+            const res = parseFloat(rub) / cadRate;
             document.getElementById('cadOut').value = res.toFixed(4);
         }
 
         function cadToRub() {
-            var cad = document.getElementById('cad').value;
+            const cad = document.getElementById('cad').value;
             if (cad === '' || isNaN(cad)) {
                 document.getElementById('rubOut').value = '';
                 return;
             }
-            var res = parseFloat(cad) * cadRate;
+            const res = parseFloat(cad) * cadRate;
             document.getElementById('rubOut').value = res.toFixed(2);
         }
 
